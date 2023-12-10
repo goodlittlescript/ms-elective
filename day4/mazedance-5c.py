@@ -1,16 +1,7 @@
 import os
 import time
-import sys, termios, tty
+import sys
 
-def getch():
-    fd = sys.stdin.fileno()
-    orig = termios.tcgetattr(fd)
-    try:
-        tty.setcbreak(fd)  # or tty.setraw(fd) if you prefer raw mode's behavior.
-        return sys.stdin.read(1)
-    finally:
-        termios.tcsetattr(fd, termios.TCSAFLUSH, orig)
-    
 def render(maze, x, y):
     os.system('clear')
     print("Actions: h (right) j (down) k (up) l (left) q (quit)")
@@ -38,25 +29,26 @@ x = 1
 y = 1
 render(maze, x, y)
 
-while True:
-    user_input = getch()
+with open("/dev/stdin", "r") as f:
+    while True:
+        user_input = sys.stdin.read(1)
 
-    new_x = x
-    new_y = y
-    if user_input == "l":
-        new_x += 1
-    if user_input == "h":
-        new_x -= 1
-    if user_input == "j":
-        new_y += 1
-    if user_input == "k":
-        new_y -= 1
-    if user_input == "q":
-        print("Thanks for playing!")
-        exit()
+        new_x = x
+        new_y = y
+        if user_input == "l":
+            new_x += 1
+        if user_input == "h":
+            new_x -= 1
+        if user_input == "j":
+            new_y += 1
+        if user_input == "k":
+            new_y -= 1
+        if user_input == "q":
+            print("Thanks for playing!")
+            exit()
 
-    if maze[new_y][new_x] == " ":
-        x = new_x
-        y = new_y
+        if maze[new_y][new_x] == " ":
+            x = new_x
+            y = new_y
 
-    render(maze, x, y)
+        render(maze, x, y)

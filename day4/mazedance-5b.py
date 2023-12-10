@@ -1,16 +1,7 @@
 import os
 import time
-import sys, termios, tty
+import sys
 
-def getch():
-    fd = sys.stdin.fileno()
-    orig = termios.tcgetattr(fd)
-    try:
-        tty.setcbreak(fd)  # or tty.setraw(fd) if you prefer raw mode's behavior.
-        return sys.stdin.read(1)
-    finally:
-        termios.tcsetattr(fd, termios.TCSAFLUSH, orig)
-    
 def render(maze, x, y):
     os.system('clear')
     print("Actions: h (right) j (down) k (up) l (left) q (quit)")
@@ -39,7 +30,7 @@ y = 1
 render(maze, x, y)
 
 while True:
-    user_input = getch()
+    user_input = sys.stdin.read(1)
 
     new_x = x
     new_y = y
