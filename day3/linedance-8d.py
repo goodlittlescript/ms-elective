@@ -1,21 +1,9 @@
 import os
 import time
 
-line = [
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  "."
-]
+line = [":", ".", ".", ".", ".", ".", ".", ".", ":"]
 
-locations = [
-    1, 2, 3, 4, 5, 6, 7
-]
+locations = [1, 2, 3, 4, 5, 6, 7]
 
 
 def render(line, location):
@@ -25,6 +13,7 @@ def render(line, location):
             print("X")
         else:
             print(char)
+
 
 for location in locations:
     render(line, location)

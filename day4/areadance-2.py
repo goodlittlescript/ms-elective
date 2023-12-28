@@ -15,19 +15,20 @@ lines = [
 ]
 
 locations = [
-    [1,1],
-    [2,2],
-    [3,3],
-    [4,4],
-    [5,5],
-    [6,6],
-    [7,7],
-    [6,6],
-    [5,5],
-    [4,4],
-    [3,3],
-    [2,2],
+    [1, 1],
+    [2, 2],
+    [3, 3],
+    [4, 4],
+    [5, 5],
+    [6, 6],
+    [7, 7],
+    [6, 6],
+    [5, 5],
+    [4, 4],
+    [3, 3],
+    [2, 2],
 ]
+
 
 def render(lines, location):
     os.system("clear")
@@ -40,8 +41,8 @@ def render(lines, location):
         sys.stdout.write("\n")
 
 
-for _ in range(0,3):
+for _ in range(0, 3):
     for location in locations:
         render(lines, location)
         time.sleep(0.1)
-render(lines, [1,1])
+render(lines, [1, 1])

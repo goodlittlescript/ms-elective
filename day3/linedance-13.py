@@ -16,11 +16,17 @@ def render(line, location):
 
 
 location = 1
-for _ in range(0, 39):
+offset = 1
+for _ in range(0, 40):
     render(line, location)
 
-    location += 1
-    if location > 7:
-        location = 1
+    print(f"offset: {offset}")
+    next_location = location + offset
+
+    if line[next_location] == ":":
+        offset *= -1
+        next_location = location + offset
+
+    location = next_location
 
     time.sleep(0.1)

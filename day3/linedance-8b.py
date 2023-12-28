@@ -1,16 +1,6 @@
 import os
 
-line = [
-  ".",
-  "X",
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  "."
-]
+line = [":", "X", ".", ".", ".", ".", ".", ".", ":"]
 
 print("index")
 for index, char in enumerate(line):

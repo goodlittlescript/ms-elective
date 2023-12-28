@@ -1,16 +1,7 @@
 import os
 
-line = [
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  ".",
-  "."
-]
+line = [":", ".", ".", ".", ".", ".", ".", ".", ":"]  # No more X
+
 
 def render(line, location):
     os.system("clear")
@@ -19,6 +10,7 @@ def render(line, location):
             print("X")
         else:
             print(char)
+
 
 render(line, 1)
 print("location 1")

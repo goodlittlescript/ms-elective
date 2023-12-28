@@ -14,6 +14,7 @@ lines = [
     list("#########"),
 ]
 
+
 def render(lines, location):
     os.system("clear")
     for y, line in enumerate(lines):
@@ -24,12 +25,13 @@ def render(lines, location):
                 sys.stdout.write(char)
         sys.stdout.write("\n")
 
-location = [1,1]
-offset = [1,1]
-for _ in range(0,20):
+
+location = [1, 1]
+offset = [1, 1]
+for _ in range(0, 20):
     render(lines, location)
     time.sleep(0.1)
-    
+
     location[0] += offset[0]
     location[1] += offset[1]
 
