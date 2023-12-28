@@ -19,11 +19,13 @@ lines = [
     "..<......",
 ]
 
+
 def render(line):
-    os.system('clear')
+    os.system("clear")
     print(line)
 
-for _ in range(0,3):
+
+for _ in range(0, 3):
     for line in lines:
         # Turn this into a function
         render(line)

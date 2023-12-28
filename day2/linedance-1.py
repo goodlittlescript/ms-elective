@@ -1,4 +1,3 @@
-
 print(".X.......")
 input()
 
@@ -37,4 +36,3 @@ input()
 
 print(".X.......")
 input()
-

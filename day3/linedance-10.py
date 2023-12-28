@@ -2,9 +2,7 @@ import os
 import time
 import sys
 
-line = [
-    ":",".",".",".",".",".",".",".",":"
-]
+line = [":", ".", ".", ".", ".", ".", ".", ".", ":"]
 
 locations = [
     1,
@@ -17,14 +15,15 @@ locations = [
 ]
 
 def render(line, location):
-    os.system('clear')
+    os.system("clear")
     for index, char in enumerate(line):
         if index == location:
             sys.stdout.write("X")
         else:
             sys.stdout.write(char)
     sys.stdout.write("\n")
-    time.sleep(0.1)
+
 
 for location in locations:
     render(line, location)
+    time.sleep(0.1)

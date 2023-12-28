@@ -2,8 +2,9 @@ import os
 import time
 import sys
 
+
 def render(line, location):
-    os.system('clear')
+    os.system("clear")
     print("Actions: h (right) l (left) q (quit)")
     for index, char in enumerate(line):
         if index == location:
@@ -12,9 +13,8 @@ def render(line, location):
             sys.stdout.write(char)
     sys.stdout.write("\n")
 
-line = [
-    ":",".",".",".",".",".",".",".",":"
-]
+
+line = [":", ".", ".", ".", ".", ".", ".", ".", ":"]
 
 location = 1
 render(line, location)
@@ -28,11 +28,4 @@ while True:
     if user_input == "q":
         print("Thanks for playing!")
         exit()
-
-    if location < 0:
-        location = 0
-
-    if location == len(line):
-        location -= 1
-
     render(line, location)

@@ -1,54 +1,53 @@
 import os
 
-os.system('clear')
+os.system("clear")
 print(".X.......")
 input()
 
-os.system('clear')
+os.system("clear")
 print("..X......")
 input()
 
-os.system('clear')
+os.system("clear")
 print("...X.....")
 input()
 
-os.system('clear')
+os.system("clear")
 print("....X....")
 input()
 
-os.system('clear')
+os.system("clear")
 print(".....X...")
 input()
 
-os.system('clear')
+os.system("clear")
 print("......X..")
 input()
 
-os.system('clear')
+os.system("clear")
 print(".......X.")
 input()
 
-os.system('clear')
+os.system("clear")
 print("......X..")
 input()
 
-os.system('clear')
+os.system("clear")
 print(".....X...")
 input()
 
-os.system('clear')
+os.system("clear")
 print("....X....")
 input()
 
-os.system('clear')
+os.system("clear")
 print("...X.....")
 input()
 
-os.system('clear')
+os.system("clear")
 print("..X......")
 input()
 
-os.system('clear')
+os.system("clear")
 print(".X.......")
 input()
-

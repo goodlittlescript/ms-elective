@@ -1,83 +1,49 @@
 import os
 
 line = [
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    ".",
-    "."
+  ".",
+  ".",
+  ".",
+  ".",
+  ".",
+  ".",
+  ".",
+  ".",
+  "."
 ]
 
-os.system('clear')
+def render(line, location):
+    os.system("clear")
+    for index, char in enumerate(line):
+        if index == location:
+            print("X")
+        else:
+            print(char)
+
+render(line, 1)
 print("location 1")
-location = 1
-for index, char in enumerate(line):
-    if index == location:
-        print("X")
-    else:
-        print(char)
 input()
 
-os.system('clear')
+render(line, 2)
 print("location 2")
-location = 2
-for index, char in enumerate(line):
-    if index == location:
-        print("X")
-    else:
-        print(char)
 input()
 
-os.system('clear')
+render(line, 3)
 print("location 3")
-location = 3
-for index, char in enumerate(line):
-    if index == location:
-        print("X")
-    else:
-        print(char)
 input()
 
-os.system('clear')
+render(line, 4)
 print("location 4")
-location = 4
-for index, char in enumerate(line):
-    if index == location:
-        print("X")
-    else:
-        print(char)
 input()
 
-os.system('clear')
+render(line, 5)
 print("location 5")
-location = 5
-for index, char in enumerate(line):
-    if index == location:
-        print("X")
-    else:
-        print(char)
 input()
 
-os.system('clear')
+render(line, 6)
 print("location 6")
-location = 6
-for index, char in enumerate(line):
-    if index == location:
-        print("X")
-    else:
-        print(char)
 input()
 
-os.system('clear')
+render(line, 7)
 print("location 7")
-location = 7
-for index, char in enumerate(line):
-    if index == location:
-        print("X")
-    else:
-        print(char)
 input()

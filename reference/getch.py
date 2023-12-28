@@ -9,4 +9,3 @@ def getch():
         return sys.stdin.read(1)
     finally:
         termios.tcsetattr(fd, termios.TCSAFLUSH, orig)
-    

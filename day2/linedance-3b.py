@@ -14,16 +14,19 @@ lines = [
     "....X....",
     "...X.....",
     "..X......",
+    ".X.......",
 ]
 
-
-def render(line):
-    os.system("clear")
-    print(line)
-
+# returns the current time in seconds
+start = time.time()
 
 for line in lines:
-    render(line)
-    time.sleep(0.1)
+    os.system("clear")
+    print(line)
+    input()
 
-render(lines[0])
+# so we can calculate the elapsed time
+finish = time.time()
+elapsed = finish - start
+
+print("You won in: " + str(elapsed) + "s")

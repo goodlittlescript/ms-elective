@@ -18,4 +18,3 @@ for item in questions:
         print("You win!")
     else:
         print("Sorry no, the answer is: " + answer)
-

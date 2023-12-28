@@ -18,6 +18,6 @@ lines = [
 ]
 
 for line in lines:
-    os.system('clear')
+    os.system("clear")
     print(line)
     time.sleep(0.1)

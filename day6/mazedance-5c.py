@@ -2,8 +2,9 @@ import os
 import time
 import sys
 
+
 def render(maze, x, y):
-    os.system('clear')
+    os.system("clear")
     print("Actions: h (right) j (down) k (up) l (left) q (quit)")
     for y_index, line in enumerate(maze):
         for x_index, char in enumerate(line):
@@ -13,6 +14,8 @@ def render(maze, x, y):
                 sys.stdout.write(char)
         sys.stdout.write("\n")
     sys.stdout.write("\n")
+
+
 #############################################################################
 
 maze = [

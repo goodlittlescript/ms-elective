@@ -17,6 +17,6 @@ lines = [
 ]
 
 for line in lines:
-    os.system('clear')
+    os.system("clear")
     print(line)
     input()
