@@ -1,4 +1,4 @@
-# Quiz Game + score (but has an error in it)
+# Quiz Game + score
 print("Lets play a game!")
 score = 0
 
@@ -18,5 +18,4 @@ if response == "N":
 else:
     print("Sorry the correct answer is: N")
 
-# NOTE THIS WILL CAUSE AN ERROR
-print("Your score is: " + score)
+print("Your score is: " + str(score))
