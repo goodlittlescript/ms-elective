@@ -1,5 +1,5 @@
 import os
-import time
+
 
 lines = [
     ".X.......",
@@ -17,16 +17,10 @@ lines = [
     ".X.......",
 ]
 
-# returns the current time in seconds
-start = time.time()
+
+
 
 for line in lines:
     os.system("clear")
     print(line)
     input()
-
-# so we can calculate the elapsed time
-finish = time.time()
-elapsed = finish - start
-
-print("You won in: " + str(elapsed) + "s")
