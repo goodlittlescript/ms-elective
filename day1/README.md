@@ -7,14 +7,6 @@ Goals
 - Strings (str) and integers (int)
 - Challenge: lists
 
-Learnings
-
-- input
-- print
-- comment
-- if/else
-- errors
-
 ## quiz-1
 
 `#`
@@ -52,20 +44,25 @@ This code is simple, but has lots of things that might trip you up. Make sure yo
 ## quiz-3
 
 `+`
-  An operation to add together integers. Note we've already used `+` with strings to mean concatenation. With integers `+` is addition. But notably _you can't add strings and integers_. Hence the last line of the program causes an error like `TypeError: can only concatenate str (not "int") to str`.
+  An operation to add together integers. Note we've already used `+` with strings to mean concatenation. With integers `+` is addition.
+
+## quiz-4
+
+`+`
+  Notably _you can't add strings and integers_. Hence the last line of the program causes an error like `TypeError: can only concatenate str (not "int") to str`.
 
 The real lesson here is that if you get an error message read it and it will usually give a strong hint as to what is wrong.
 
-## quiz-4
+## quiz-5
 
 `str()`
   A function to cast things like integers into strings.
 
 To fix the error above we "cast" the integer into a string. Then we have two strings and so we can concatenate them.
 
-## quiz-5 (challenge)
+## quiz-6
 
-`the_list = ["a","b","c"]`
+`questions = ["a","b","c"]`
   List creation
 
 `for (question, answer) in questions:`

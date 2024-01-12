@@ -1,19 +1,21 @@
-# Quiz Game + lists
+# Quiz Game + score
 print("Lets play a game!")
 score = 0
 
-questions = [
-    ["Is water wet?", "Y"],
-    ["Is an apple an orange?", "N"],
-]
+print("Is water wet? (enter Y or N)")
+response = input()
+if response == "Y":
+    print("You win!")
+    score = score + 1
+else:
+    print("Sorry the correct answer is: Y")
 
-for (question, answer) in questions:
-    print(question + " (enter Y or N)")
-    response = input()
-    if response == answer:
-        print("You win!")
-        score += 1
-    else:
-        print("Sorry no, the answer is: " + answer)
+print("Is an apple an orange? (enter Y or N)")
+response = input()
+if response == "N":
+    print("You win!")
+    score = score + 1
+else:
+    print("Sorry the correct answer is: N")
 
 print("Your score is: " + str(score))
