@@ -1,5 +1,17 @@
 import os
 
+# Wraps the location if it leaves the specified range.
+#
+# Note the range is [lower,upper) meaning it includes the
+# lower value but only goes "up to" the upper value.
+def wrap_location(location, lower, upper):
+    if location >= upper:
+        return lower
+    elif location < lower:
+        return upper - 1
+    else:
+        return location
+
 lines = [
     ".X.......",
     "..X......",
@@ -10,14 +22,6 @@ lines = [
     ".......X.",
 ]
 
-def wrap_location(location, lines):
-    if location >= len(lines):
-        return 0
-    elif location < 0:
-        return len(lines) - 1
-    else:
-        return location
-
 location = 5
 print(lines[location])
 
@@ -26,7 +30,7 @@ if cmd == "left":
     location -= 1
 if cmd == "right":
     location += 1
-location = wrap_location(location, lines)
+location = wrap_location(location, 0, len(lines))
 print(lines[location])
 
 cmd = input("enter move: ")
@@ -34,7 +38,7 @@ if cmd == "left":
     location -= 1
 if cmd == "right":
     location += 1
-location = wrap_location(location, lines)
+location = wrap_location(location, 0, len(lines))
 print(lines[location])
 
 cmd = input("enter move: ")
@@ -42,5 +46,5 @@ if cmd == "left":
     location -= 1
 if cmd == "right":
     location += 1
-location = wrap_location(location, lines)
+location = wrap_location(location, 0, len(lines))
 print(lines[location])

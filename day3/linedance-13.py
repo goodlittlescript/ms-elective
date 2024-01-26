@@ -1,5 +1,17 @@
 import os
 
+# Bounds the location if it leaves the specified range.
+#
+# Note the range is [lower,upper) meaning it includes the
+# lower value but only goes "up to" the upper value.
+def bound_location(location, lower, upper):
+    if location >= upper:
+        return upper - 1
+    elif location < lower:
+        return lower
+    else:
+        return location
+
 lines = [
     ".X.......",
     "..X......",
@@ -9,14 +21,6 @@ lines = [
     "......X..",
     ".......X.",
 ]
-
-def bound_location(location, lines):
-    if location >= len(lines):
-        return len(lines) - 1
-    elif location < 0:
-        return 0
-    else:
-        return location
 
 location = 5
 print(lines[location])
@@ -29,6 +33,6 @@ while True:
         location += 1
     if cmd == "quit":
         break
-    location = bound_location(location, lines)
+    location = bound_location(location, 0, len(lines))
     print(lines[location])
 
