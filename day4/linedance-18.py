@@ -15,7 +15,15 @@ def bound_location(location, lower, upper):
         return location
 
 
-line = "........"
+lines = [
+    ".X.......",
+    "..X......",
+    "...X.....",
+    "....X....",
+    ".....X...",
+    "......X..",
+    ".......X.",
+]
 
 keymap = {
     "h": "left",
@@ -27,11 +35,9 @@ instructions = "enter command (h:left l:right q:quit)"
 
 
 def main(stdscr):
-    stdscr.addstr(0, 0, line)
-    stdscr.addstr(1, 0, instructions)
-
     location = 5
-    stdscr.addstr(0, location, " ")
+    stdscr.addstr(0, 0, lines[location])
+    stdscr.addstr(1, 0, instructions)
     stdscr.move(0, location)
     stdscr.refresh()
 
@@ -48,9 +54,8 @@ def main(stdscr):
         if cmd == "unknown":
             pass
 
-        location = bound_location(location, 0, len(line))
-
-        stdscr.addstr(0, location, " ")
+        location = bound_location(location, 0, len(lines))
+        stdscr.addstr(0, 0, lines[location])
         stdscr.move(0, location)
         stdscr.refresh()
 

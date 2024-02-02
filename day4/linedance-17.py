@@ -38,7 +38,6 @@ def main(stdscr):
     location = 5
     stdscr.addstr(0, 0, lines[location])
     stdscr.addstr(1, 0, instructions)
-    stdscr.move(0, location)
     stdscr.refresh()
 
     while True:
@@ -56,7 +55,6 @@ def main(stdscr):
 
         location = bound_location(location, 0, len(lines))
         stdscr.addstr(0, 0, lines[location])
-        stdscr.move(0, location)
         stdscr.refresh()
 
 

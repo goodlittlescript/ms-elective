@@ -15,37 +15,24 @@ def bound_location(location, lower, upper):
         return location
 
 
-lines = [
-    "........",
-    "........",
-    "........",
-    "........",
-    "........",
-]
+line = "........"
 
 keymap = {
     "h": "left",
-    "j": "down",
-    "k": "up",
     "l": "right",
     "q": "quit",
 }
 
-instructions = "enter command (h:left j:down k:up l:right q:quit)"
+instructions = "enter command (h:left l:right q:quit)"
 
 
 def main(stdscr):
-    y_location = 0
-    for line in lines:
-        stdscr.addstr(y_location, 0, line)
-        y_location += 1
-    stdscr.addstr(y_location, 0, instructions)
+    stdscr.addstr(0, 0, line)
+    stdscr.addstr(1, 0, instructions)
 
-    y_location = 0
-    x_location = 5
-
-    stdscr.addstr(y_location, x_location, " ")
-    stdscr.move(y_location, x_location)
+    location = 5
+    stdscr.addstr(0, location, " ")
+    stdscr.move(0, location)
     stdscr.refresh()
 
     while True:
@@ -53,23 +40,18 @@ def main(stdscr):
         cmd = keymap.get(key, "unknown")
 
         if cmd == "left":
-            x_location -= 1
+            location -= 1
         if cmd == "right":
-            x_location += 1
-        if cmd == "up":
-            y_location -= 1
-        if cmd == "down":
-            y_location += 1
+            location += 1
         if cmd == "quit":
             break
         if cmd == "unknown":
             pass
 
-        x_location = bound_location(x_location, 0, len(lines[0]))
-        y_location = bound_location(y_location, 0, len(lines))
+        location = bound_location(location, 0, len(line))
 
-        stdscr.addstr(y_location, x_location, " ")
-        stdscr.move(y_location, x_location)
+        stdscr.addstr(0, location, " ")
+        stdscr.move(0, location)
         stdscr.refresh()
 
 
