@@ -89,7 +89,6 @@ def main(stdscr):
                 modified_line = ""
                 for x in range(max_x - 1):
                     modified_line += chr(stdscr.inch(y, x))
-                modified_line = modified_line.rstrip()
                 modified_lines.append(modified_line)
             save_maze(maze_file, modified_lines)
 
