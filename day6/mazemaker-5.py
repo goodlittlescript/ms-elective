@@ -96,29 +96,14 @@ def main(stdscr):
         y_location = bound_location(y_location, 0, max_y)
         x_location = bound_location(x_location, 0, max_x)
 
-        # debug line
-        stdscr.addstr(
-            max_y - 1,
-            0,
-            f"{y_location}/{x_location} {mode} {repr(key)} {ord(key) if len(key) == 1 else ''}".ljust(
-                max_x - 1, " "
-            ),
-        )
+        debug_line = f"{y_location}/{x_location} {mode} {repr(key)} {ord(key) if len(key) == 1 else ''}"
+        stdscr.addstr(max_y - 1, 0, debug_line.ljust(max_x - 1, " "))
 
         if mode == "insert":
             stdscr.addstr(y_location, x_location, insert_char)
 
         stdscr.move(y_location, x_location)
         stdscr.refresh()
-
-    modified_lines = []
-    for y in range(max_y - 1):
-        modified_line = ""
-        for x in range(max_x - 1):
-            modified_line += chr(stdscr.inch(y, x))
-        modified_line = modified_line.rstrip()
-        modified_lines.append(modified_line)
-    return modified_lines
 
 
 curses.wrapper(main)

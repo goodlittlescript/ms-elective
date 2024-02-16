@@ -73,14 +73,10 @@ def main(stdscr):
         y_location = bound_location(y_location, 0, max_y)
         x_location = bound_location(x_location, 0, max_x)
 
-        # debug line
-        stdscr.addstr(
-            max_y - 1,
-            0,
-            f"{y_location}/{x_location} {repr(key)} {ord(key) if len(key) == 1 else ''}".ljust(
-                max_x - 1, " "
-            ),
+        debug_line = (
+            f"{y_location}/{x_location} {repr(key)} {ord(key) if len(key) == 1 else ''}"
         )
+        stdscr.addstr(max_y - 1, 0, debug_line.ljust(max_x - 1, " "))
 
         stdscr.move(y_location, x_location)
         stdscr.refresh()
