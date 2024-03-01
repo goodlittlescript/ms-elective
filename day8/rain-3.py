@@ -27,14 +27,16 @@ keymap = {
 def main(stdscr):
     stdscr.nodelay(True)
     max_y, max_x = stdscr.getmaxyx()
-    
+
     now = 0
     y_location = 0
     x_location = 0
     ground = max_y - 1
     raindrops = []
 
-    debug = f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
+    debug = (
+        f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
+    )
     stdscr.addstr(ground, 0, debug.ljust(max_x - 1, " "))
     stdscr.move(int(y_location), int(x_location))
     stdscr.refresh()
@@ -65,8 +67,7 @@ def main(stdscr):
         if cmd == "drop":
             raindrop = [y_location, x_location]
             raindrops.append(raindrop)
-        for raindrop in raindrops:
-            raindrop_y, raindrop_x = raindrop
+        for raindrop_y, raindrop_x in raindrops:
             raindrop_y += 1
             if raindrop_y >= ground:
                 raindrop_y = ground

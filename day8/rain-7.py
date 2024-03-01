@@ -23,6 +23,7 @@ keymap = {
     "q": "quit",
 }
 
+
 class Raindrop:
     def __init__(self, y_location, x_location):
         self.y_location = y_location
@@ -32,14 +33,16 @@ class Raindrop:
 def main(stdscr):
     stdscr.nodelay(True)
     max_y, max_x = stdscr.getmaxyx()
-    
+
     now = 0
     y_location = 0
     x_location = 0
     ground = max_y - 1
     raindrops = []
 
-    debug = f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
+    debug = (
+        f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
+    )
     stdscr.addstr(ground, 0, debug.ljust(max_x - 1, " "))
     stdscr.move(int(y_location), int(x_location))
     stdscr.refresh()
@@ -70,15 +73,21 @@ def main(stdscr):
         if cmd == "drop":
             raindrop = Raindrop(y_location, x_location)
             raindrops.append(raindrop)
+
         for raindrop in raindrops:
             stdscr.addstr(raindrop.y_location, raindrop.x_location, " ")
+
+        new_raindrops = []
+        for raindrop in raindrops:
             raindrop.y_location += 1
-            if raindrop.y_location >= ground:
-                raindrop.y_location = ground
+            if raindrop.y_location < ground:
+                new_raindrop = Raindrop(raindrop.y_location, raindrop.x_location)
+                new_raindrops.append(new_raindrop)
+
+        for raindrop in new_raindrops:
             stdscr.addstr(raindrop.y_location, raindrop.x_location, ".")
-    
-        # list comprehension selecting only raindrops above ground
-        raindrops = [raindrop for raindrop in raindrops if raindrop.y_location < ground]
+
+        raindrops = new_raindrops
 
         debug = f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
         stdscr.addstr(ground, 0, debug.ljust(max_x - 1, " "))

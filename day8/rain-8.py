@@ -23,6 +23,7 @@ keymap = {
     "q": "quit",
 }
 
+
 class Raindrop:
     def __init__(self, y_location, x_location):
         self.y_location = y_location
@@ -30,8 +31,7 @@ class Raindrop:
 
 
 class Scene:
-    def __init__(self, stdscr, ground):
-        self.stdscr = stdscr
+    def __init__(self, ground):
         self.ground = ground
         self.raindrops = []
 
@@ -39,26 +39,31 @@ class Scene:
         raindrop = Raindrop(y_location, x_location)
         self.raindrops.append(raindrop)
 
-    def step_forward(self):
+    def refresh(self, stdscr):
         for raindrop in self.raindrops:
-            self.stdscr.addstr(raindrop.y_location, raindrop.x_location, " ")
+            stdscr.addstr(raindrop.y_location, raindrop.x_location, " ")
+
+        new_raindrops = []
+        for raindrop in self.raindrops:
             raindrop.y_location += 1
-            if raindrop.y_location >= self.ground:
-                raindrop.y_location = self.ground
-            self.stdscr.addstr(raindrop.y_location, raindrop.x_location, ".")
-    
-        # list comprehension selecting only raindrops above ground
-        self.raindrops = [raindrop for raindrop in self.raindrops if raindrop.y_location < self.ground]
+            if raindrop.y_location < self.ground:
+                new_raindrop = Raindrop(raindrop.y_location, raindrop.x_location)
+                new_raindrops.append(new_raindrop)
+        self.raindrops = new_raindrops
+
+        for raindrop in self.raindrops:
+            stdscr.addstr(raindrop.y_location, raindrop.x_location, ".")
+
 
 def main(stdscr):
     stdscr.nodelay(True)
     max_y, max_x = stdscr.getmaxyx()
-    
+
     now = 0
     y_location = 0
     x_location = 0
     ground = max_y - 1
-    scene = Scene(stdscr, ground)
+    scene = Scene(ground)
 
     debug = f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(scene.raindrops)}"
     stdscr.addstr(ground, 0, debug.ljust(max_x - 1, " "))
@@ -90,7 +95,7 @@ def main(stdscr):
 
         if cmd == "drop":
             scene.add_raindrop(y_location, x_location)
-        scene.step_forward()
+        scene.refresh(stdscr)
 
         debug = f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(scene.raindrops)}"
         stdscr.addstr(ground, 0, debug.ljust(max_x - 1, " "))

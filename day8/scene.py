@@ -1,8 +1,3 @@
-import os
-import curses
-import time
-
-
 # Bounds the location if it leaves the specified range.
 #
 # Note the range is [lower,upper) meaning it includes the
@@ -14,14 +9,6 @@ def bound_location(location, lower, upper):
         return lower
     else:
         return location
-
-
-keymap = {
-    "h": "left",
-    "l": "right",
-    " ": "drop",
-    "q": "quit",
-}
 
 
 class Raindrop:
@@ -86,33 +73,3 @@ class Scene:
         stdscr.addstr(ground, 0, self.debug_str().ljust(max_x - 1, " "))
         stdscr.move(self.cloud.y_location, self.cloud.x_location)
         stdscr.refresh()
-
-
-def main(stdscr):
-    stdscr.nodelay(True)
-    scene = Scene()
-    scene.refresh(stdscr)
-
-    while True:
-        time.sleep(0.1)
-        try:
-            key = stdscr.getkey()
-        except Exception:
-            key = ""
-        cmd = keymap.get(key, "unknown")
-
-        if cmd == "left":
-            scene.cloud.move_left()
-        if cmd == "right":
-            scene.cloud.move_right()
-        if cmd == "quit":
-            exit()
-        if cmd == "unknown":
-            pass
-
-        if cmd == "drop":
-            scene.add_raindrop()
-        scene.refresh(stdscr)
-
-
-curses.wrapper(main)

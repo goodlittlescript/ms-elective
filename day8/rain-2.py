@@ -27,13 +27,15 @@ keymap = {
 def main(stdscr):
     stdscr.nodelay(True)
     max_y, max_x = stdscr.getmaxyx()
-    
+
     now = 0
     y_location = 0
     x_location = 0
     raindrops = []
 
-    debug = f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
+    debug = (
+        f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
+    )
     stdscr.addstr(max_y - 1, 0, debug.ljust(max_x - 1, " "))
     stdscr.move(int(y_location), int(x_location))
     stdscr.refresh()

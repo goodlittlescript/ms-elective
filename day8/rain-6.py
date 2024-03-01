@@ -23,23 +23,20 @@ keymap = {
     "q": "quit",
 }
 
-class Raindrop:
-    def __init__(self, y_location, x_location):
-        self.y_location = y_location
-        self.x_location = x_location
-
 
 def main(stdscr):
     stdscr.nodelay(True)
     max_y, max_x = stdscr.getmaxyx()
-    
+
     now = 0
     y_location = 0
     x_location = 0
     ground = max_y - 1
     raindrops = []
 
-    debug = f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
+    debug = (
+        f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
+    )
     stdscr.addstr(ground, 0, debug.ljust(max_x - 1, " "))
     stdscr.move(int(y_location), int(x_location))
     stdscr.refresh()
@@ -68,14 +65,23 @@ def main(stdscr):
         now += 1
 
         if cmd == "drop":
-            raindrop = Raindrop(y_location, x_location)
+            raindrop = [y_location, x_location]
             raindrops.append(raindrop)
-        for raindrop in raindrops:
-            stdscr.addstr(raindrop.y_location, raindrop.x_location, " ")
-            raindrop.y_location += 1
-            if raindrop.y_location >= ground:
-                raindrop.y_location = ground
-            stdscr.addstr(raindrop.y_location, raindrop.x_location, ".")
+
+        for raindrop_y, raindrop_x in raindrops:
+            stdscr.addstr(raindrop_y, raindrop_x, " ")
+
+        new_raindrops = []
+        for raindrop_y, raindrop_x in raindrops:
+            raindrop_y += 1
+            if raindrop_y < ground:
+                new_raindrop = [raindrop_y, raindrop_x]
+                new_raindrops.append(new_raindrop)
+
+        for raindrop_y, raindrop_x in new_raindrops:
+            stdscr.addstr(raindrop_y, raindrop_x, ".")
+
+        raindrops = new_raindrops
 
         debug = f"now: {now} ({y_location:.0f}, {x_location:.0f}) raindrops: {len(raindrops)}"
         stdscr.addstr(ground, 0, debug.ljust(max_x - 1, " "))
