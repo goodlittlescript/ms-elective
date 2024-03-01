@@ -1,4 +1,3 @@
-import os
 import curses
 import time
 
@@ -54,8 +53,6 @@ def main(stdscr):
         except Exception:
             key = ""
         cmd = keymap.get(key, "unknown")
-
-        y_curr, x_curr = stdscr.getyx()
 
         if cmd == "left":
             x_location -= 1

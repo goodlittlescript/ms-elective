@@ -1,4 +1,3 @@
-import os
 import curses
 import time
 
@@ -28,6 +27,10 @@ class Raindrop:
     def __init__(self, y_location, x_location):
         self.y_location = y_location
         self.x_location = x_location
+
+    def bound_location(self, max_y, max_x):
+        self.y_location = bound_location(self.y_location, 0, max_y)
+        self.x_location = bound_location(self.x_location, 0, max_x)
 
 
 class Cloud:
@@ -70,12 +73,13 @@ class Scene:
         self.cloud.bound_location(max_y, max_x)
 
         for raindrop in self.raindrops:
+            raindrop.bound_location(max_y, max_x)
             stdscr.addstr(raindrop.y_location, raindrop.x_location, " ")
 
         new_raindrops = []
         for raindrop in self.raindrops:
             raindrop.y_location += 1
-            if raindrop.y_location < ground:
+            if raindrop.y_location <= ground:
                 new_raindrop = Raindrop(raindrop.y_location, raindrop.x_location)
                 new_raindrops.append(new_raindrop)
         self.raindrops = new_raindrops

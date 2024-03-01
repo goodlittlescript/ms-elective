@@ -7,6 +7,7 @@ keymap = {
     "l": "right",
     " ": "drop",
     "q": "quit",
+    "KEY_RESIZE": "resize",
 }
 
 
@@ -27,6 +28,8 @@ def main(stdscr):
             scene.cloud.move_left()
         if cmd == "right":
             scene.cloud.move_right()
+        if cmd == "resize":
+            stdscr.clear()
         if cmd == "quit":
             exit()
         if cmd == "unknown":
